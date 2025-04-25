@@ -56,9 +56,6 @@ export default function Home() {
               <Link href="/about">
                 <Button variant="outline">About</Button>
               </Link>
-              <Link href="/contact">
-                <Button variant="outline">Contact</Button>
-              </Link>
             </>
           )}
         </motion.div>
