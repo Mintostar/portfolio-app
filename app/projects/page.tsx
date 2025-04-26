@@ -69,7 +69,7 @@ export default function ProjectsPage() {
       <motion.h1
         className="text-5xl md:text-7xl font-bold text-center fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
         initial={{ scale: 1, y: 0 }}
-        animate={typingDone ? { scale: 0.7, y: "-16rem" } : {}}
+        animate={typingDone ? { scale: 0.7, y: "-40vh" } : {}}
         transition={{ duration: 1, delay: 0.3 }}
       >
         {!typingDone && (
