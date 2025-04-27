@@ -59,9 +59,9 @@ export default function AboutPage() {
 
           {/* 自己紹介カード */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 1.2 }}
+            initial={{ opacity: 0, scale: 0.95, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeInOut", delay: 1.2 }}
           >
             <Card className="rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300">
               <CardContent className="p-6">
@@ -77,9 +77,9 @@ export default function AboutPage() {
 
           {/* スキルセットカード */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 1.5 }}
+            initial={{ opacity: 0, scale: 0.95, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeInOut", delay: 1.5 }}
           >
             <Card className="rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300">
               <CardContent className="p-6">
@@ -87,7 +87,7 @@ export default function AboutPage() {
                 <div className="space-y-4">
                   {skills.map((skill, index) => (
                     <div key={index}>
-                      <div className="flex justify-between mb-1">
+                      <div className="flex justify-between items-center py-2">
                         <span className="font-medium">{skill.name}</span>
                         <span className="text-sm text-muted-foreground">{getStars(skill.level)}</span>
                       </div>
@@ -113,9 +113,9 @@ export default function AboutPage() {
 
           {/* リンクカード */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 1.8 }}
+            initial={{ opacity: 0, scale: 0.95, y: 30 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeInOut", delay: 1.8 }}
           >
             <Card className="rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300">
               <CardContent className="p-6">
