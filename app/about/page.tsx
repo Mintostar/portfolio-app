@@ -63,7 +63,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 1.2 }}
           >
-            <Card className="rounded-2xl shadow-lg">
+            <Card className="rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300">
               <CardContent className="p-6">
                 <h2 className="text-2xl font-bold mb-4">自己紹介</h2>
                 <p className="text-muted-foreground leading-relaxed">
@@ -81,7 +81,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 1.5 }}
           >
-            <Card className="rounded-2xl shadow-lg">
+            <Card className="rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300">
               <CardContent className="p-6">
                 <h2 className="text-2xl font-bold mb-6">スキルセット</h2>
                 <div className="space-y-4">
@@ -117,7 +117,7 @@ export default function AboutPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.9, delay: 1.8 }}
           >
-            <Card className="rounded-2xl shadow-lg">
+            <Card className="rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300">
               <CardContent className="p-6">
                 <h2 className="text-2xl font-bold mb-4">リンク</h2>
                 <div className="flex gap-6">
