@@ -16,12 +16,13 @@ export default function AboutPage() {
   }, []);
 
   const skills = [
-    { name: "JavaScript / TypeScript", level: 5 },
-    { name: "Next.js / React", level: 4 },
-    { name: "Python", level: 3 },
-    { name: "Git / Docker", level: 4 },
-    { name: "Figma", level: 3 },
+    { name: "JavaScript / TypeScript", level: 5, description: "いい感じに書けます。" },
+    { name: "Next.js / React", level: 4, description: "いい感じに書けます。" },
+    { name: "Python", level: 3, },
+    { name: "Git / Docker", level: 4, description: "いい感じに書けます。" },
+    { name: "Figma", level: 3, },
   ];
+
 
   // 星をレベルに基づいて表示する関数
   const getStars = (level: number) => {
@@ -90,8 +91,21 @@ export default function AboutPage() {
                         <span className="font-medium">{skill.name}</span>
                         <span className="text-sm text-muted-foreground">{getStars(skill.level)}</span>
                       </div>
+                      <p className="text-sm text-muted-foreground">{skill.description}</p>
                     </div>
                   ))}
+                </div>
+
+                {/* スキル評価基準 */}
+                <div className="mt-8 border-t pt-6 text-sm text-muted-foreground space-y-2">
+                  <h3 className="text-lg font-semibold">スキルレベル基準</h3>
+                  <ul className="list-disc list-inside space-y-1">
+                    <li>★★★★★ : 学生レベルでは十分な理解と実装力あり。個人開発・課題制作を自走して完成できる。</li>
+                    <li>★★★★☆ : 基本的な実装をスムーズに行える。応用にも挑戦できるレベル。</li>
+                    <li>★★★☆☆ : 基礎的な技術・概念を理解し、サンプルや指示に沿って開発可能。</li>
+                    <li>★★☆☆☆ : 学習途中。簡単なサンプルコードを読み書きできる。</li>
+                    <li>★☆☆☆☆ : 初学習段階。今後習得予定。</li>
+                  </ul>
                 </div>
               </CardContent>
             </Card>
