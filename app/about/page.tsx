@@ -26,23 +26,23 @@ export default function AboutPage() {
 
   // 星をレベルに基づいて表示するコンポーネント
   const StarRating = ({ level }: { level: number }) => {
-    const baseDelay = 3;
+    const baseDelay = 2.7;
 
     return (
       <div className="flex">
         {Array.from({ length: 5 }).map((_, index) => (
           <motion.span
             key={index}
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+            initial={{ color: "#d1d5db" }}
+            animate={{ color: index < level ? "#000000" : "#d1d5db" }}
             transition={{
-              delay: baseDelay + index * 0.3, // ベース遅延＋星ごとの遅延
-              duration: 0.1,
+              delay: baseDelay + index * 0.4,
+              duration: 0.3,
               ease: "easeOut",
             }}
             className="text-lg"
           >
-            {index < level ? "★" : "☆"}
+            ★
           </motion.span>
         ))}
       </div>
