@@ -24,12 +24,32 @@ export default function AboutPage() {
   ];
 
 
-  // 星をレベルに基づいて表示する関数
-  const getStars = (level: number) => {
-    const fullStars = "★".repeat(level);
-    const emptyStars = "☆".repeat(5 - level);
-    return fullStars + emptyStars;
+  // 星をレベルに基づいて表示するコンポーネント
+  const StarRating = ({ level }: { level: number }) => {
+    const baseDelay = 3;
+
+    return (
+      <div className="flex">
+        {Array.from({ length: 5 }).map((_, index) => (
+          <motion.span
+            key={index}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              delay: baseDelay + index * 0.3, // ベース遅延＋星ごとの遅延
+              duration: 0.1,
+              ease: "easeOut",
+            }}
+            className="text-lg"
+          >
+            {index < level ? "★" : "☆"}
+          </motion.span>
+        ))}
+      </div>
+    );
   };
+
+
 
   return (
     <main className="relative min-h-screen px-4 py-8">
@@ -89,7 +109,7 @@ export default function AboutPage() {
                     <div key={index}>
                       <div className="flex justify-between items-center py-2">
                         <span className="font-medium">{skill.name}</span>
-                        <span className="text-sm text-muted-foreground">{getStars(skill.level)}</span>
+                        <StarRating level={skill.level} />
                       </div>
                       <p className="text-sm text-muted-foreground">{skill.description}</p>
                     </div>
