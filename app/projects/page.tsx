@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { Typewriter } from "react-simple-typewriter";
 import { ProjectCard } from "@/components/ProjectCard";
 import { BackButton } from "@/components/BackButton";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const projects = [
   {
@@ -54,11 +54,34 @@ const projects = [
 
 export default function ProjectsPage() {
   const [typingDone, setTypingDone] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<{
+    title: string;
+    description: string;
+    githubUrl: string;
+    siteUrl: string;
+    date: string;
+  } | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setTypingDone(true), 2500);
     return () => clearTimeout(timer);
   }, []);
+
+  interface Project {
+    title: string;
+    description: string;
+    githubUrl: string;
+    siteUrl: string;
+    date: string;
+  }
+
+  const handleCardClick = (project: Project) => {
+    setSelectedProject(project);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedProject(null);
+  };
 
   return (
     <main className="relative min-h-screen px-4 py-8">
@@ -90,14 +113,105 @@ export default function ProjectsPage() {
         {typingDone && "Projects"}
       </motion.h1>
 
-
       {typingDone && (
         <section className="mt-[200px] px-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6">
           {projects.map((project, i) => (
-            <ProjectCard key={i} project={project} index={i} />
+            <div key={i} onClick={() => handleCardClick(project)}>
+              <ProjectCard project={project} index={i} />
+            </div>
           ))}
         </section>
       )}
+
+      {/* 詳細モーダル */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            className="fixed inset-0 bg-opacity-50 backdrop-blur-sm flex items-center justify-center z-50"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={handleCloseModal}
+          >
+            <motion.div
+              className="bg-white rounded-3xl shadow-xl p-10 max-w-4xl w-full relative overflow-y-auto max-h-[90vh] border border-gray-200"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={handleCloseModal}
+                className="absolute top-5 right-5 text-gray-400 hover:text-gray-600 text-2xl transition"
+                aria-label="閉じる"
+              >
+                ✕
+              </button>
+
+              <div className="space-y-8">
+                {/* ヘッダー */}
+                <div className="border-b pb-4">
+                  <h2 className="text-4xl font-extrabold tracking-tight text-gray-800">{selectedProject.title}</h2>
+                  <p className="text-sm text-gray-500 mt-1">{selectedProject.date}</p>
+                </div>
+
+                {/* 概要セクション */}
+                <section>
+                  <h3 className="text-lg font-semibold text-gray-700 mb-1">プロジェクト概要</h3>
+                  <p className="text-gray-700 leading-relaxed text-[16px]">
+                    {selectedProject.description}
+                  </p>
+                </section>
+
+                {/* 制作背景 */}
+                <section>
+                  <h3 className="text-lg font-semibold text-gray-700 mb-1">背景と目的</h3>
+                  <p className="text-gray-700 text-[16px] leading-relaxed">
+                    このプロジェクトは、ポートフォリオとしての実用性を重視し、現代的なUI構築技術（Next.js / shadcn/uiなど）を活用。個人ブランドの確立とWeb制作スキルの総合的な証明を目的としています。
+                  </p>
+                </section>
+
+                {/* 使用技術 */}
+                <section>
+                  <h3 className="text-lg font-semibold text-gray-700 mb-1">使用技術スタック</h3>
+                  <ul className="flex flex-wrap gap-3">
+                    {["Next.js", "shadcn/ui", "Framer Motion", "TypeScript"].map((tech, index) => (
+                      <li
+                        key={index}
+                        className="bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full border border-gray-200"
+                      >
+                        {tech}
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+
+                {/* 外部リンク */}
+                <section className="flex flex-col sm:flex-row gap-4 pt-4">
+                  <a
+                    href={selectedProject.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-gray-900 hover:bg-gray-800 text-white px-6 py-2 rounded-xl text-sm text-center transition"
+                  >
+                    GitHub リポジトリ
+                  </a>
+                  <a
+                    href={selectedProject.siteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-xl text-sm text-center transition"
+                  >
+                    サイトを見る
+                  </a>
+                </section>
+              </div>
+            </motion.div>
+
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
