@@ -6,74 +6,54 @@ import { ProjectCard } from "@/components/ProjectCard";
 import { BackButton } from "@/components/BackButton";
 import { motion, AnimatePresence } from "framer-motion";
 
-const projects = [
+interface Project {
+  title: string;
+  description: string;
+  githubUrl: string;
+  siteUrl: string;
+  date: string;
+  background: string;
+  techStack: string[];
+}
+
+const projects: Project[] = [
   {
     title: "ポートフォリオサイト",
     description: "Next.js + shadcn/uiを用いた個人サイト",
     githubUrl: "https://github.com/yourname/portfolio",
     siteUrl: "https://yourportfolio.com",
     date: "2025/04/01",
+    background: "自身の開発スキルをアピールするために作成したポートフォリオサイト。",
+    techStack: ["Next.js", "shadcn/ui", "Framer Motion", "TypeScript"],
   },
   {
-    title: "ポートフォリオサイト",
-    description: "Next.js + shadcn/uiを用いた個人サイト",
-    githubUrl: "https://github.com/yourname/portfolio",
-    siteUrl: "https://yourportfolio.com",
-    date: "2025/04/01",
+    title: "ToDoアプリ",
+    description: "ReactとFirebaseによる簡易タスク管理アプリ",
+    githubUrl: "https://github.com/yourname/todo-app",
+    siteUrl: "https://yourtodoapp.com",
+    date: "2025/03/20",
+    background: "状態管理とリアルタイムデータベースの連携を試すために開発。",
+    techStack: ["React", "Firebase", "Tailwind CSS", "TypeScript"],
   },
   {
-    title: "ポートフォリオサイト",
-    description: "Next.js + shadcn/uiを用いた個人サイト",
-    githubUrl: "https://github.com/yourname/portfolio",
-    siteUrl: "https://yourportfolio.com",
-    date: "2025/04/01",
+    title: "ブログCMS",
+    description: "SanityとNext.jsを使ったブログCMS",
+    githubUrl: "https://github.com/yourname/blog-cms",
+    siteUrl: "https://yourblogcms.com",
+    date: "2025/02/10",
+    background: "ヘッドレスCMSとの統合に挑戦したプロジェクト。",
+    techStack: ["Next.js", "Sanity", "TypeScript", "Vercel"],
   },
-  {
-    title: "ポートフォリオサイト",
-    description: "Next.js + shadcn/uiを用いた個人サイト",
-    githubUrl: "https://github.com/yourname/portfolio",
-    siteUrl: "https://yourportfolio.com",
-    date: "2025/04/01",
-  },
-  {
-    title: "ポートフォリオサイト",
-    description: "Next.js + shadcn/uiを用いた個人サイト",
-    githubUrl: "https://github.com/yourname/portfolio",
-    siteUrl: "https://yourportfolio.com",
-    date: "2025/04/01",
-  },
-  {
-    title: "ポートフォリオサイト",
-    description: "Next.js + shadcn/uiを用いた個人サイト",
-    githubUrl: "https://github.com/yourname/portfolio",
-    siteUrl: "https://yourportfolio.com",
-    date: "2025/04/01",
-  },
-  // 他のプロジェクト...
 ];
 
 export default function ProjectsPage() {
   const [typingDone, setTypingDone] = useState(false);
-  const [selectedProject, setSelectedProject] = useState<{
-    title: string;
-    description: string;
-    githubUrl: string;
-    siteUrl: string;
-    date: string;
-  } | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setTypingDone(true), 2500);
     return () => clearTimeout(timer);
   }, []);
-
-  interface Project {
-    title: string;
-    description: string;
-    githubUrl: string;
-    siteUrl: string;
-    date: string;
-  }
 
   const handleCardClick = (project: Project) => {
     setSelectedProject(project);
@@ -85,10 +65,8 @@ export default function ProjectsPage() {
 
   return (
     <main className="relative min-h-screen px-4 py-8">
-      {/* 戻るボタン */}
       <BackButton />
 
-      {/* タイトルタイピング */}
       <motion.h1
         className={`text-5xl md:text-7xl font-bold text-center left-1/2 -translate-x-1/2 z-10 ${typingDone ? "absolute" : "fixed"
           }`}
@@ -123,7 +101,6 @@ export default function ProjectsPage() {
         </section>
       )}
 
-      {/* 詳細モーダル */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -138,7 +115,7 @@ export default function ProjectsPage() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.35, ease: 'easeOut' }}
+              transition={{ duration: 0.35, ease: "easeOut" }}
               onClick={(e) => e.stopPropagation()}
             >
               <button
@@ -150,33 +127,39 @@ export default function ProjectsPage() {
               </button>
 
               <div className="space-y-8">
-                {/* ヘッダー */}
                 <div className="border-b pb-4">
-                  <h2 className="text-4xl font-extrabold tracking-tight text-gray-800">{selectedProject.title}</h2>
-                  <p className="text-sm text-gray-500 mt-1">{selectedProject.date}</p>
+                  <h2 className="text-4xl font-extrabold tracking-tight text-gray-800">
+                    {selectedProject.title}
+                  </h2>
+                  <p className="text-sm text-gray-500 mt-1">
+                    {selectedProject.date}
+                  </p>
                 </div>
 
-                {/* 概要セクション */}
                 <section>
-                  <h3 className="text-lg font-semibold text-gray-700 mb-1">プロジェクト概要</h3>
+                  <h3 className="text-lg font-semibold text-gray-700 mb-1">
+                    プロジェクト概要
+                  </h3>
                   <p className="text-gray-700 leading-relaxed text-[16px]">
                     {selectedProject.description}
                   </p>
                 </section>
 
-                {/* 制作背景 */}
                 <section>
-                  <h3 className="text-lg font-semibold text-gray-700 mb-1">背景と目的</h3>
+                  <h3 className="text-lg font-semibold text-gray-700 mb-1">
+                    背景と目的
+                  </h3>
                   <p className="text-gray-700 text-[16px] leading-relaxed">
-                    このプロジェクトは、ポートフォリオとしての実用性を重視し、現代的なUI構築技術（Next.js / shadcn/uiなど）を活用。個人ブランドの確立とWeb制作スキルの総合的な証明を目的としています。
+                    {selectedProject.background}
                   </p>
                 </section>
 
-                {/* 使用技術 */}
                 <section>
-                  <h3 className="text-lg font-semibold text-gray-700 mb-1">使用技術スタック</h3>
+                  <h3 className="text-lg font-semibold text-gray-700 mb-1">
+                    使用技術スタック
+                  </h3>
                   <ul className="flex flex-wrap gap-3">
-                    {["Next.js", "shadcn/ui", "Framer Motion", "TypeScript"].map((tech, index) => (
+                    {selectedProject.techStack.map((tech, index) => (
                       <li
                         key={index}
                         className="bg-gray-100 text-gray-700 text-sm px-3 py-1 rounded-full border border-gray-200"
@@ -187,7 +170,6 @@ export default function ProjectsPage() {
                   </ul>
                 </section>
 
-                {/* 外部リンク */}
                 <section className="flex flex-col sm:flex-row gap-4 pt-4">
                   <a
                     href={selectedProject.githubUrl}
@@ -208,7 +190,6 @@ export default function ProjectsPage() {
                 </section>
               </div>
             </motion.div>
-
           </motion.div>
         )}
       </AnimatePresence>
