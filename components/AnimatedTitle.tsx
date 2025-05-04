@@ -21,27 +21,34 @@ export const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
   }, [typingDelay]);
 
   return (
-    <motion.h1
-      className="text-4xl sm:text-5xl md:text-7xl font-bold text-center left-1/2 -translate-x-1/2 z-10 fixed"
-      initial={{ top: "50%", scale: 1, translateY: "-50%" }}
+    <motion.div
+      className="flex items-center justify-center w-full h-screen absolute"
+      initial={{ scale: 1 }}
       animate={
         typingDone
-          ? { top: "10vh", translateY: "0%", scale: 0.7 }
-          : { top: "50%", translateY: "-50%", scale: 1 }
+          ? { scale: 0.7, y: "-42vh" }
+          : { scale: 1, y: "0vh" }
       }
       transition={{ duration: 1, delay: 0.3 }}
     >
       {!typingDone && (
-        <Typewriter
-          words={[title]}
-          loop={1}
-          cursor
-          cursorStyle="_"
-          typeSpeed={100}
-          delaySpeed={1000}
-        />
+        <div className="text-4xl sm:text-5xl md:text-7xl font-bold text-center">
+          {/* Typewriterを独立したスタイルでラップ */}
+          <Typewriter
+            words={[title]}
+            loop={1}
+            cursor
+            cursorStyle="_"
+            typeSpeed={100}
+            delaySpeed={1000}
+          />
+        </div>
       )}
-      {typingDone && title}
-    </motion.h1>
+      {typingDone && (
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-center">
+          {title}
+        </h1>
+      )}
+    </motion.div>
   );
 };
