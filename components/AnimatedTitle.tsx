@@ -31,9 +31,8 @@ export const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
       }
       transition={{ duration: 1, delay: 0.3 }}
     >
-      {!typingDone && (
-        <div className="text-4xl sm:text-5xl md:text-7xl font-bold text-center">
-          {/* Typewriterを独立したスタイルでラップ */}
+      <div className="text-4xl sm:text-5xl md:text-7xl font-bold text-center">
+        {!typingDone ? (
           <Typewriter
             words={[title]}
             loop={1}
@@ -42,13 +41,13 @@ export const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
             typeSpeed={100}
             delaySpeed={1000}
           />
-        </div>
-      )}
-      {typingDone && (
-        <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-center">
-          {title}
-        </h1>
-      )}
+        ) : (
+          <span>
+            {title}
+            <span style={{ visibility: "hidden" }}>_</span>
+          </span>
+        )}
+      </div>
     </motion.div>
   );
 };
