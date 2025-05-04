@@ -22,7 +22,7 @@ export const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
 
   return (
     <motion.div
-      className="flex items-center justify-center w-full h-screen absolute"
+      className="flex items-center justify-center w-full h-screen absolute z-0" // z-indexを下げる
       initial={{ scale: 1 }}
       animate={
         typingDone

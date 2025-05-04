@@ -32,7 +32,7 @@ export default function ProjectsPage() {
       <AnimatedTitle title="Projects" typingDelay={2500} />
 
       {typingDone && (
-        <section className="mt-[200px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
+        <section className="mt-[200px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8 relative z-10"> {/* z-indexを上げる */}
           {projects.map((project, i) => (
             <div
               key={i}
