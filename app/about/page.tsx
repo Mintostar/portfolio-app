@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Typewriter } from "react-simple-typewriter";
 import { BackButton } from "@/components/BackButton";
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { Github } from "lucide-react";
+import { AnimatedTitle } from "@/components/AnimatedTitle";
 
 export default function AboutPage() {
   const [typingDone, setTypingDone] = useState(false);
@@ -51,29 +51,7 @@ export default function AboutPage() {
     <main className="relative min-h-screen px-4 py-8 sm:px-6 lg:px-8">
       <BackButton />
 
-      <motion.h1
-        className={`text-4xl sm:text-5xl md:text-7xl font-bold text-center left-1/2 -translate-x-1/2 z-10 ${typingDone ? "absolute" : "fixed"
-          }`}
-        initial={{ top: "50%", scale: 1, translateY: "-50%" }}
-        animate={
-          typingDone
-            ? { top: "10vh", translateY: "0%", scale: 0.7 }
-            : { top: "50%", translateY: "-50%", scale: 1 }
-        }
-        transition={{ duration: 1, delay: 0.3 }}
-      >
-        {!typingDone && (
-          <Typewriter
-            words={["About"]}
-            loop={1}
-            cursor
-            cursorStyle="_"
-            typeSpeed={100}
-            delaySpeed={1000}
-          />
-        )}
-        {typingDone && "About"}
-      </motion.h1>
+      <AnimatedTitle title="About" typingDelay={2500} />
 
       {typingDone && (
         <section className="flex flex-col gap-8 mt-48 max-w-full sm:max-w-2xl lg:max-w-3xl mx-auto">
