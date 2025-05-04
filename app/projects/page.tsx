@@ -26,7 +26,7 @@ export default function ProjectsPage() {
   };
 
   return (
-    <main className="relative min-h-screen px-4 py-8 bg-white">
+    <main className="relative min-h-screen px-4 py-8 sm:px-6 lg:px-8 bg-white">
       <BackButton />
 
       <motion.h1
@@ -54,9 +54,13 @@ export default function ProjectsPage() {
       </motion.h1>
 
       {typingDone && (
-        <section className="mt-[200px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-6">
+        <section className="mt-[200px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8">
           {projects.map((project, i) => (
-            <div key={i} onClick={() => handleCardClick(project)}>
+            <div
+              key={i}
+              onClick={() => handleCardClick(project)}
+              className="cursor-pointer"
+            >
               <ProjectCard project={project} index={i} />
             </div>
           ))}

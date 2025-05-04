@@ -18,13 +18,11 @@ export default function AboutPage() {
   const skills = [
     { name: "JavaScript / TypeScript", level: 5, description: "いい感じに書けます。" },
     { name: "Next.js / React", level: 4, description: "いい感じに書けます。" },
-    { name: "Python", level: 3, },
+    { name: "Python", level: 3 },
     { name: "Git / Docker", level: 4, description: "いい感じに書けます。" },
-    { name: "Figma", level: 3, },
+    { name: "Figma", level: 3 },
   ];
 
-
-  // 星をレベルに基づいて表示するコンポーネント
   const StarRating = ({ level }: { level: number }) => {
     const baseDelay = 2.7;
 
@@ -49,14 +47,12 @@ export default function AboutPage() {
     );
   };
 
-
-
   return (
-    <main className="relative min-h-screen px-4 py-8">
+    <main className="relative min-h-screen px-4 py-8 sm:px-6 lg:px-8">
       <BackButton />
 
       <motion.h1
-        className={`text-5xl md:text-7xl font-bold text-center left-1/2 -translate-x-1/2 z-10 ${typingDone ? "absolute" : "fixed"
+        className={`text-4xl sm:text-5xl md:text-7xl font-bold text-center left-1/2 -translate-x-1/2 z-10 ${typingDone ? "absolute" : "fixed"
           }`}
         initial={{ top: "50%", scale: 1, translateY: "-50%" }}
         animate={
@@ -79,10 +75,8 @@ export default function AboutPage() {
         {typingDone && "About"}
       </motion.h1>
 
-
       {typingDone && (
-        <section className="flex flex-col gap-8 mt-48 max-w-3xl mx-auto">
-
+        <section className="flex flex-col gap-8 mt-48 max-w-full sm:max-w-2xl lg:max-w-3xl mx-auto">
           {/* 自己紹介カード */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 30 }}
@@ -90,9 +84,9 @@ export default function AboutPage() {
             transition={{ duration: 0.9, ease: "easeInOut", delay: 1.2 }}
           >
             <Card className="rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300">
-              <CardContent className="p-6">
-                <h2 className="text-2xl font-bold mb-4">自己紹介</h2>
-                <p className="text-muted-foreground leading-relaxed">
+              <CardContent className="p-4 sm:p-6">
+                <h2 className="text-xl sm:text-2xl font-bold mb-4">自己紹介</h2>
+                <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
                   仮置きの文章。<br />
                   test
                   test
@@ -108,8 +102,8 @@ export default function AboutPage() {
             transition={{ duration: 0.9, ease: "easeInOut", delay: 1.5 }}
           >
             <Card className="rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300">
-              <CardContent className="p-6">
-                <h2 className="text-2xl font-bold mb-6">スキルセット</h2>
+              <CardContent className="p-4 sm:p-6">
+                <h2 className="text-xl sm:text-2xl font-bold mb-6">スキルセット</h2>
                 <div className="space-y-4">
                   {skills.map((skill, index) => (
                     <div key={index}>
@@ -117,18 +111,28 @@ export default function AboutPage() {
                         <span className="font-medium">{skill.name}</span>
                         <StarRating level={skill.level} />
                       </div>
-                      <p className="text-sm text-muted-foreground">{skill.description}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground">
+                        {skill.description}
+                      </p>
                     </div>
                   ))}
                 </div>
 
                 {/* スキル評価基準 */}
-                <div className="mt-8 border-t pt-6 text-sm text-muted-foreground space-y-2">
-                  <h3 className="text-lg font-semibold">スキルレベル基準</h3>
+                <div className="mt-8 border-t pt-6 text-xs sm:text-sm text-muted-foreground space-y-2">
+                  <h3 className="text-base sm:text-lg font-semibold">
+                    スキルレベル基準
+                  </h3>
                   <ul className="list-disc list-inside space-y-1">
-                    <li>★★★★★ : 学生レベルでは十分な理解と実装力あり。個人開発・課題制作を自走して完成できる。</li>
-                    <li>★★★★☆ : 基本的な実装をスムーズに行える。応用にも挑戦できるレベル。</li>
-                    <li>★★★☆☆ : 基礎的な技術・概念を理解し、サンプルや指示に沿って開発可能。</li>
+                    <li>
+                      ★★★★★ : 学生レベルでは十分な理解と実装力あり。個人開発・課題制作を自走して完成できる。
+                    </li>
+                    <li>
+                      ★★★★☆ : 基本的な実装をスムーズに行える。応用にも挑戦できるレベル。
+                    </li>
+                    <li>
+                      ★★★☆☆ : 基礎的な技術・概念を理解し、サンプルや指示に沿って開発可能。
+                    </li>
                     <li>★★☆☆☆ : 学習途中。簡単なサンプルコードを読み書きできる。</li>
                     <li>★☆☆☆☆ : 初学習段階。今後習得予定。</li>
                   </ul>
@@ -144,9 +148,9 @@ export default function AboutPage() {
             transition={{ duration: 0.9, ease: "easeInOut", delay: 1.8 }}
           >
             <Card className="rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300">
-              <CardContent className="p-6">
-                <h2 className="text-2xl font-bold mb-4">リンク</h2>
-                <div className="flex gap-6">
+              <CardContent className="p-4 sm:p-6">
+                <h2 className="text-xl sm:text-2xl font-bold mb-4">リンク</h2>
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
                   <motion.a
                     href="https://github.com/yourname"
                     target="_blank"
@@ -160,7 +164,6 @@ export default function AboutPage() {
               </CardContent>
             </Card>
           </motion.div>
-
         </section>
       )}
     </main>

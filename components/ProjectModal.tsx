@@ -17,7 +17,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
       aria-label="プロジェクト詳細モーダル"
     >
       <motion.div
-        className="bg-white/90 backdrop-blur-md shadow-2xl rounded-3xl p-8 md:p-12 max-w-4xl w-full max-h-[90vh] overflow-y-auto relative border border-gray-200"
+        className="bg-white/90 backdrop-blur-md shadow-2xl rounded-3xl p-6 sm:p-8 md:p-12 max-w-full sm:max-w-4xl w-full max-h-screen overflow-y-auto relative border border-gray-200"
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
@@ -26,33 +26,33 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
       >
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 text-gray-500 hover:text-gray-700 text-2xl transition"
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl transition"
           aria-label="閉じる"
         >
           ✕
         </button>
 
-        <div className="space-y-8 text-gray-800">
+        <div className="space-y-6 text-gray-800">
           <div className="border-b pb-4">
-            <h2 className="text-4xl font-bold">{project.title}</h2>
-            <p className="text-sm text-gray-500 mt-1">{project.date}</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">{project.title}</h2>
+            <p className="text-xs sm:text-sm text-gray-500 mt-1">{project.date}</p>
           </div>
 
-          <div className="space-y-6 text-[16px] leading-relaxed">
+          <div className="space-y-6 text-sm sm:text-base leading-relaxed">
             <section>
-              <h3 className="font-semibold text-lg text-gray-700 mb-1">概要</h3>
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">概要</h3>
               <p>{project.description}</p>
             </section>
 
             <section>
-              <h3 className="font-semibold text-lg text-gray-700 mb-1">背景と目的</h3>
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">背景と目的</h3>
               <p>{project.background}</p>
             </section>
 
             {project?.features?.length > 0 && (
               <section>
-                <h3 className="font-semibold text-lg text-gray-700 mb-1">主な機能</h3>
-                <ul className="list-disc pl-5">
+                <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">主な機能</h3>
+                <ul className="list-disc pl-5 space-y-1">
                   {project.features.map((feature, i) => (
                     <li key={i}>{feature}</li>
                   ))}
@@ -62,12 +62,12 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
             {project?.techStack?.length > 0 && (
               <section>
-                <h3 className="font-semibold text-lg text-gray-700 mb-1">使用技術スタック</h3>
-                <ul className="flex flex-wrap gap-3">
+                <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">使用技術スタック</h3>
+                <ul className="flex flex-wrap gap-2 sm:gap-3">
                   {project.techStack.map((tech, i) => (
                     <li
                       key={i}
-                      className="bg-white border border-gray-300 px-3 py-1 rounded-full text-sm shadow-sm"
+                      className="bg-white border border-gray-300 px-3 py-1 rounded-full text-xs sm:text-sm shadow-sm"
                     >
                       {tech}
                     </li>
@@ -77,12 +77,12 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             )}
 
             <section>
-              <h3 className="font-semibold text-lg text-gray-700 mb-1">学んだこと</h3>
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">学んだこと</h3>
               <p>{project.learnings}</p>
             </section>
 
             <section>
-              <h3 className="font-semibold text-lg text-gray-700 mb-1">工夫した点</h3>
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">工夫した点</h3>
               <p>{project.highlights}</p>
             </section>
 
