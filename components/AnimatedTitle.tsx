@@ -22,8 +22,7 @@ export const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
 
   return (
     <motion.h1
-      className={`text-4xl sm:text-5xl md:text-7xl font-bold text-center left-1/2 -translate-x-1/2 z-10 ${typingDone ? "absolute" : "fixed"
-        }`}
+      className="text-4xl sm:text-5xl md:text-7xl font-bold text-center left-1/2 -translate-x-1/2 z-10 fixed"
       initial={{ top: "50%", scale: 1, translateY: "-50%" }}
       animate={
         typingDone
