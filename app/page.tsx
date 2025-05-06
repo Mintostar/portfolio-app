@@ -27,7 +27,7 @@ export default function Home() {
           transition={{ duration: 0.7, ease: "easeOut" }} // テキスト移動のアニメーション。0.7秒で上に移動
         >
           <Typewriter
-            words={["Hi!!, I’m XXX. It’s my portfolio!"]}
+            words={["Hi! I'm KAZUKI. Welcome to my portfolio!"]}
             loop={1}
             cursor
             cursorStyle="_"
@@ -54,7 +54,7 @@ export default function Home() {
                 <Button variant="outline">Projects</Button>
               </Link>
               <Link href="/about">
-                <Button variant="outline">About</Button>
+                <Button variant="outline">About me</Button>
               </Link>
             </>
           )}

@@ -16,11 +16,18 @@ export default function AboutPage() {
   }, []);
 
   const skills = [
-    { name: "JavaScript / TypeScript", level: 5, description: "いい感じに書けます。" },
-    { name: "Next.js / React", level: 4, description: "いい感じに書けます。" },
-    { name: "Python", level: 3 },
-    { name: "Git / Docker", level: 4, description: "いい感じに書けます。" },
-    { name: "Figma", level: 3 },
+    { name: "JavaScript / TypeScript", level: 5, description: "PBL、進級製作ともに使った。" },
+    { name: "Next.js / React", level: 5, description: "進級製作に使った。コンポーネント設計や状態管理ができる。" },
+    { name: "Python", level: 4, description: "個人開発のゲームファイル翻訳ツールを作った。データ分析に興味がある。" },
+    { name: "HTML / CSS", level: 4, description: "基本的なコードは書ける。頑張れば、レスポンシブデザイン対応できる。" },
+    { name: "Java", level: 3, description: "基本的なコードは書けるが、しっかり何かを開発したことはない。" },
+    { name: "PHP", level: 2, description: "学校の授業でWordpressを触ったときに使った。" },
+    { name: "Kotlin", level: 3, description: "簡単なAndroidアプリは作れる。" },
+    { name: "Git / GitHub", level: 5, description: "バージョン管理やチーム開発で活用。ブランチ運用やプルリクエストの作成が可能。" },
+    { name: "Figma", level: 1, description: "UI/UXデザインツールとして使用。簡単なデザインは作れる。" },
+    { name: "Linux", level: 5, description: "学校使っていた。開発はWindowsよりこっちがやりやすく感じる。大好き。" },
+    { name: "Firebase", level: 4, description: "進級製作のときに使った。認証やデータベースを活用したWebアプリケーションが作れる" },
+    { name: "Tailwind CSS", level: 5, description: "最近はノーマルなCSSよりこっちを使っている。ダークモードの実装とかが楽。" },
   ];
 
   const StarRating = ({ level }: { level: number }) => {
@@ -51,7 +58,7 @@ export default function AboutPage() {
     <main className="relative min-h-screen px-4 py-8 sm:px-6 lg:px-8">
       <BackButton />
 
-      <AnimatedTitle title="About" typingDelay={2500} />
+      <AnimatedTitle title="About me" typingDelay={2500} />
 
       {typingDone && (
         <section className="flex flex-col gap-8 mt-48 max-w-full sm:max-w-2xl lg:max-w-3xl mx-auto">
@@ -65,9 +72,10 @@ export default function AboutPage() {
               <CardContent className="p-4 sm:p-6">
                 <h2 className="text-xl sm:text-2xl font-bold mb-4">自己紹介</h2>
                 <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                  仮置きの文章。<br />
-                  test
-                  test
+                  はじめまして、和希と申します。<br />
+                  現在、ITカレッジ沖縄の学生としてプログラミングを学びながら、個人開発や課題制作に取り組んでいます。<br />
+                  最近は、Next.jsとTypeScriptを使ったWebアプリケーションの開発に力を入れています。<br />
+                  ポートフォリオでは、これまでの学びや制作物を通じて、自分のスキルや成長の軌跡をまとめています。<br />
                 </p>
               </CardContent>
             </Card>
@@ -128,15 +136,24 @@ export default function AboutPage() {
             <Card className="rounded-3xl border border-gray-200 dark:border-gray-700 shadow-xl hover:shadow-2xl transition-all duration-300">
               <CardContent className="p-4 sm:p-6">
                 <h2 className="text-xl sm:text-2xl font-bold mb-4">リンク</h2>
-                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+                <div className="flex flex-row gap-6">
                   <motion.a
-                    href="https://github.com/yourname"
+                    href="https://github.com/itc-s23023"
                     target="_blank"
                     rel="noopener noreferrer"
                     whileHover={{ scale: 1.1, y: -4 }}
                     className="flex items-center gap-2 text-primary transition"
                   >
-                    <Github className="w-6 h-6" /> GitHub
+                    <Github className="w-6 h-6" /> GitHub(学校用)
+                  </motion.a>
+                  <motion.a
+                    href="https://github.com/Mintostar"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -4 }}
+                    className="flex items-center gap-2 text-primary transition"
+                  >
+                    <Github className="w-6 h-6" /> GitHub(個人用)
                   </motion.a>
                 </div>
               </CardContent>
