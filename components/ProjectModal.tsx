@@ -132,21 +132,23 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
               >
                 <FaGithub className="w-7 h-7 hover:text-black transition" />
               </a>
-              <Button
-                asChild
-                variant="outline"
-                className="flex items-center gap-2"
-              >
-                <a
-                  href={project.siteUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="サイトを見る"
+              {project.siteUrl && (
+                <Button
+                  asChild
+                  variant="outline"
+                  className="flex items-center gap-2"
                 >
-                  <FiExternalLink className="w-5 h-5" />
-                  サイトを見る
-                </a>
-              </Button>
+                  <a
+                    href={project.siteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="サイトを見る"
+                  >
+                    <FiExternalLink className="w-5 h-5" />
+                    サイトを見る
+                  </a>
+                </Button>
+              )}
             </div>
           </div>
         </div>
