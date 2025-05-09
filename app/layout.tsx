@@ -1,14 +1,10 @@
+"use client";
 import "./globals.css";
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
+import { DarkModeProvider } from "@/lib/DarkModeContext";
 
 const inter = Inter({ subsets: ["latin"] });
-
-export const metadata: Metadata = {
-  title: "My Portfolio",
-  description: "This is the portfolio site of XXX.",
-};
 
 export default function RootLayout({
   children,
@@ -23,7 +19,7 @@ export default function RootLayout({
           inter.className
         )}
       >
-        {children}
+        <DarkModeProvider>{children}</DarkModeProvider>
       </body>
     </html>
   );

@@ -41,6 +41,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
+/* ライトモードの色を設定 */
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
@@ -74,18 +75,34 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  --bg-color: #f5f5f5;
+  --text-color: #122234;
+  --link-color: #3168aa;
+  --main-color: #79bde9;
+  --shadow-color: #d0d0d0;
+}
+
+/* ダークモードの色を設定 */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #122234;
+    --text-color: #f5f5f5;
+    --link-color: #e7c299;
+    --main-color: #f3aa56;
+    --shadow-color: #0f1d2c;
+  }
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
+  --background: oklch(0.1 0 0); /* 背景色をより暗く変更 */
+  --foreground: oklch(0.95 0 0); /* テキスト色を少し明るく変更 */
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
+  --primary: oklch(0.8 0.1 0); /* プライマリカラーを変更 */
   --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
+  --secondary: oklch(0.3 0.05 0); /* セカンダリカラーを変更 */
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
@@ -116,5 +133,14 @@
   }
   body {
     @apply bg-background text-foreground;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+  a {
+    color: var(--link-color);
+  }
+  button {
+    background-color: var(--main-color);
+    box-shadow: 0 4px 6px var(--shadow-color);
   }
 }

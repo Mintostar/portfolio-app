@@ -5,9 +5,12 @@ import { Typewriter } from "react-simple-typewriter";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { useDarkMode } from "@/lib/DarkModeContext";
 
 export default function Home() {
   const [showLinks, setShowLinks] = useState(false);
+  const [showToggle, setShowToggle] = useState(false);
+  const { isDarkMode, toggleDarkMode } = useDarkMode();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -16,12 +19,19 @@ export default function Home() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowToggle(true);
+    }, 4000); // アニメーション終了後にボタンを表示
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <main className="flex min-h-screen items-center justify-center px-4 text-center">
-      <div className="flex flex-col items-center">
+    <main className="flex min-h-screen items-center justify-center px-4 text-center bg-white dark:bg-gray-900">
+      <div className="flex flex-col items-center text-gray-800 dark:text-gray-200">
         {/* タイピングテキスト */}
         <motion.h1
-          className="text-5xl font-bold"
+          className="text-5xl font-bold text-gray-800 dark:text-gray-200"
           initial={{ y: 0 }}
           animate={showLinks ? { y: -20 } : { y: 0 }}
           transition={{ duration: 0.7, ease: "easeOut" }} // テキスト移動のアニメーション。0.7秒で上に移動
@@ -59,6 +69,15 @@ export default function Home() {
             </>
           )}
         </motion.div>
+
+        {showToggle && (
+          <button
+            onClick={toggleDarkMode}
+            className="fixed top-4 right-4 p-2 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600 rounded shadow-md hover:bg-gray-300 dark:hover:bg-gray-700 transition"
+          >
+            {isDarkMode ? "Light Mode" : "Dark Mode"}
+          </button>
+        )}
       </div>
     </main>
   );

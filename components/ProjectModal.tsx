@@ -15,7 +15,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
 }) => {
   return (
     <motion.div
-      className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
+      className="fixed inset-0 bg-black/40 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center z-50"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -23,7 +23,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
       aria-label="プロジェクト詳細モーダル"
     >
       <motion.div
-        className="bg-white/90 backdrop-blur-md shadow-2xl rounded-3xl p-6 sm:p-8 md:p-12 max-w-full sm:max-w-4xl w-full max-h-screen overflow-y-auto relative border border-gray-200"
+        className="bg-white/90 dark:bg-gray-800 backdrop-blur-md shadow-2xl rounded-3xl p-6 sm:p-8 md:p-12 max-w-full sm:max-w-4xl w-full max-h-screen overflow-y-auto relative border border-gray-200 dark:border-gray-700"
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.9, opacity: 0 }}
@@ -32,60 +32,47 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
       >
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl transition"
+          className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 dark:text-gray-300 dark:hover:text-gray-100 bg-white dark:bg-gray-700 rounded-full p-2 transition"
           aria-label="閉じる"
         >
           ✕
         </button>
 
-        <div className="space-y-6 text-gray-800">
+        <div className="space-y-6 text-gray-800 dark:text-gray-200">
           <div className="border-b pb-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100">
               {project.title}
             </h2>
-            <p className="text-xs sm:text-sm text-gray-500 mt-1">
+            <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mt-1">
               {project.date}
             </p>
           </div>
 
-          <div className="space-y-6 text-sm sm:text-base leading-relaxed">
+          <div className="space-y-6 text-sm sm:text-base leading-relaxed text-gray-700 dark:text-gray-300">
             <section>
-              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-800 dark:text-gray-200 mb-2">
                 概要
               </h3>
               <p>{project.description}</p>
             </section>
 
             <section>
-              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-800 dark:text-gray-200 mb-2">
                 背景と目的
               </h3>
               <p>{project.background}</p>
             </section>
 
-            {project?.features?.length > 0 && (
-              <section>
-                <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
-                  主な機能
-                </h3>
-                <ul className="list-disc pl-5 space-y-1">
-                  {project.features.map((feature, i) => (
-                    <li key={i}>{feature}</li>
-                  ))}
-                </ul>
-              </section>
-            )}
-
             {project?.techStack?.length > 0 && (
               <section>
-                <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
+                <h3 className="font-semibold text-lg sm:text-xl text-gray-800 dark:text-gray-200 mb-2">
                   使用技術スタック
                 </h3>
                 <ul className="flex flex-wrap gap-2 sm:gap-3">
                   {project.techStack.map((tech, i) => (
                     <li
                       key={i}
-                      className="bg-white border border-gray-300 px-3 py-1 rounded-full text-xs sm:text-sm shadow-sm"
+                      className="bg-gray-100 dark:bg-gray-700 border border-gray-300 dark:border-gray-600 px-3 py-1 rounded-full text-xs sm:text-sm text-gray-800 dark:text-gray-200 shadow-sm"
                     >
                       {tech}
                     </li>
@@ -95,31 +82,39 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
             )}
 
             <section>
-              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-800 dark:text-gray-200 mb-2">
                 学んだこと
               </h3>
-              <p>{project.learnings}</p>
+              <p className="text-gray-700 dark:text-gray-300">
+                {project.learnings}
+              </p>
             </section>
 
             <section>
-              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-800 dark:text-gray-200 mb-2">
                 工夫した点
               </h3>
-              <p>{project.highlights}</p>
+              <p className="text-gray-700 dark:text-gray-300">
+                {project.highlights}
+              </p>
             </section>
 
             <section>
-              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-800 dark:text-gray-200 mb-2">
                 反省点
               </h3>
-              <p>{project.reflections}</p>
+              <p className="text-gray-700 dark:text-gray-300">
+                {project.reflections}
+              </p>
             </section>
 
             <section>
-              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-800 dark:text-gray-200 mb-2">
                 今後の展望
               </h3>
-              <p>{project.futurePlans}</p>
+              <p className="text-gray-700 dark:text-gray-300">
+                {project.futurePlans}
+              </p>
             </section>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4 items-center">
@@ -130,7 +125,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                 title="GitHub"
                 className="flex items-center"
               >
-                <FaGithub className="w-7 h-7 hover:text-black transition" />
+                <FaGithub className="w-7 h-7 text-gray-800 dark:text-gray-200 bg-gray-100 dark:bg-gray-700 rounded-full p-1 hover:shadow-md transition" />
               </a>
               {project.siteUrl && (
                 <Button
@@ -143,6 +138,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
                     target="_blank"
                     rel="noopener noreferrer"
                     title="サイトを見る"
+                    className="text-gray-700 dark:text-gray-300 hover:underline"
                   >
                     <FiExternalLink className="w-5 h-5" />
                     サイトを見る

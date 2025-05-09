@@ -24,14 +24,10 @@ export const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
     <motion.div
       className="flex items-center justify-center w-full h-screen absolute z-0" // z-indexを下げる
       initial={{ scale: 1 }}
-      animate={
-        typingDone
-          ? { scale: 0.7, y: "-42vh" }
-          : { scale: 1, y: "0vh" }
-      }
+      animate={typingDone ? { scale: 0.7, y: "-42vh" } : { scale: 1, y: "0vh" }}
       transition={{ duration: 1, delay: 0.3 }}
     >
-      <div className="text-4xl sm:text-5xl md:text-7xl font-bold text-center">
+      <div className="text-gray-900 dark:text-gray-100 font-bold text-4xl sm:text-5xl md:text-6xl text-center">
         {!typingDone ? (
           <Typewriter
             words={[title]}
