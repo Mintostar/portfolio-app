@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
+import { FaGithub } from "react-icons/fa";
+import { FiExternalLink } from "react-icons/fi";
 import { Project } from "@/data/projects";
+import { Button } from "@/components/ui/button";
 
 interface ProjectModalProps {
   project: Project;
@@ -119,23 +122,31 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
               <p>{project.futurePlans}</p>
             </section>
 
-            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 pt-4 items-center">
               <a
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-gray-800 hover:bg-gray-700 text-white px-6 py-2 rounded-xl text-sm text-center"
+                title="GitHub"
+                className="flex items-center"
               >
-                GitHub リポジトリ
+                <FaGithub className="w-7 h-7 hover:text-black transition" />
               </a>
-              <a
-                href={project.siteUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-blue-600 hover:bg-blue-500 text-white px-6 py-2 rounded-xl text-sm text-center"
+              <Button
+                asChild
+                variant="outline"
+                className="flex items-center gap-2"
               >
-                サイトを見る
-              </a>
+                <a
+                  href={project.siteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="サイトを見る"
+                >
+                  <FiExternalLink className="w-5 h-5" />
+                  サイトを見る
+                </a>
+              </Button>
             </div>
           </div>
         </div>
