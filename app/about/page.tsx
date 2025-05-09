@@ -6,10 +6,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { Github } from "lucide-react";
 import { AnimatedTitle } from "@/components/AnimatedTitle";
-import { useDarkMode } from "@/lib/DarkModeContext";
 
 export default function AboutPage() {
-  const { isDarkMode, toggleDarkMode } = useDarkMode();
   const [typingDone, setTypingDone] = useState(false);
 
   useEffect(() => {

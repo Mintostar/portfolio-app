@@ -7,10 +7,8 @@ import { AnimatePresence } from "framer-motion";
 import { projects, Project } from "@/data/projects";
 import { ProjectModal } from "@/components/ProjectModal";
 import { AnimatedTitle } from "@/components/AnimatedTitle";
-import { useDarkMode } from "@/lib/DarkModeContext";
 
 export default function ProjectsPage() {
-  const { isDarkMode, toggleDarkMode } = useDarkMode();
   const [typingDone, setTypingDone] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
