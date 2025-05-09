@@ -6,7 +6,10 @@ interface ProjectModalProps {
   onClose: () => void;
 }
 
-export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) => {
+export const ProjectModal: React.FC<ProjectModalProps> = ({
+  project,
+  onClose,
+}) => {
   return (
     <motion.div
       className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
@@ -34,24 +37,34 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
         <div className="space-y-6 text-gray-800">
           <div className="border-b pb-4">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">{project.title}</h2>
-            <p className="text-xs sm:text-sm text-gray-500 mt-1">{project.date}</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold">
+              {project.title}
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-500 mt-1">
+              {project.date}
+            </p>
           </div>
 
           <div className="space-y-6 text-sm sm:text-base leading-relaxed">
             <section>
-              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">概要</h3>
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
+                概要
+              </h3>
               <p>{project.description}</p>
             </section>
 
             <section>
-              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">背景と目的</h3>
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
+                背景と目的
+              </h3>
               <p>{project.background}</p>
             </section>
 
             {project?.features?.length > 0 && (
               <section>
-                <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">主な機能</h3>
+                <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
+                  主な機能
+                </h3>
                 <ul className="list-disc pl-5 space-y-1">
                   {project.features.map((feature, i) => (
                     <li key={i}>{feature}</li>
@@ -62,7 +75,9 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
 
             {project?.techStack?.length > 0 && (
               <section>
-                <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">使用技術スタック</h3>
+                <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
+                  使用技術スタック
+                </h3>
                 <ul className="flex flex-wrap gap-2 sm:gap-3">
                   {project.techStack.map((tech, i) => (
                     <li
@@ -77,13 +92,31 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             )}
 
             <section>
-              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">学んだこと</h3>
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
+                学んだこと
+              </h3>
               <p>{project.learnings}</p>
             </section>
 
             <section>
-              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">工夫した点</h3>
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
+                工夫した点
+              </h3>
               <p>{project.highlights}</p>
+            </section>
+
+            <section>
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
+                反省点
+              </h3>
+              <p>{project.reflections}</p>
+            </section>
+
+            <section>
+              <h3 className="font-semibold text-lg sm:text-xl text-gray-700 mb-2">
+                今後の展望
+              </h3>
+              <p>{project.futurePlans}</p>
             </section>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
