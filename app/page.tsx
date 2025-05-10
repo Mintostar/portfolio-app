@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useDarkMode } from "@/lib/DarkModeContext";
+import { Moon, Sun } from "lucide-react";
 
 export default function Home() {
   const [showLinks, setShowLinks] = useState(false);
@@ -73,9 +74,15 @@ export default function Home() {
         {showToggle && (
           <button
             onClick={toggleDarkMode}
-            className="fixed top-4 right-4 p-2 bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600 rounded shadow-md hover:bg-gray-300 dark:hover:bg-gray-700 transition"
+            className={`fixed top-4 right-4 flex items-center justify-center w-10 h-10 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600 rounded-full shadow-md transition
+              ${isDarkMode ? 'bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700' : 'bg-white hover:bg-gray-200'}`}
+            aria-label="Toggle Dark Mode"
           >
-            {isDarkMode ? "Light Mode" : "Dark Mode"}
+            {isDarkMode ? (
+              <Sun className="w-5 h-5 text-yellow-400" />
+            ) : (
+              <Moon className="w-5 h-5" />
+            )}
           </button>
         )}
       </div>
