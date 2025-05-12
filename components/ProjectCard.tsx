@@ -7,6 +7,7 @@ type Project = {
   title: string;
   description: string;
   date?: string;
+  isDeveloping?: boolean;
 };
 
 export const ProjectCard = ({
@@ -31,9 +32,14 @@ export const ProjectCard = ({
             <p className="text-sm text-gray-600 dark:text-gray-400">
               {project.description}
             </p>
+            {project.isDeveloping && (
+              <span className="text-xs text-red-500">開発中</span>
+            )}
+            {!project.isDeveloping && (
+              <span className="text-xs text-green-500">完成</span>
+            )}
           </div>
 
-          {/* 日付を下に配置 */}
           {project.date && (
             <div className="mt-auto pt-6 text-xs text-gray-400 dark:text-gray-500 text-right">
               {project.date}
