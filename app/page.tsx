@@ -7,11 +7,13 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useDarkMode } from "@/lib/DarkModeContext";
 import { Moon, Sun } from "lucide-react";
+import { useMediaQuery } from "@/lib/utils";
 
 export default function Home() {
   const [showLinks, setShowLinks] = useState(false);
   const [showToggle, setShowToggle] = useState(false);
   const { isDarkMode, toggleDarkMode } = useDarkMode();
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -38,7 +40,11 @@ export default function Home() {
           transition={{ duration: 0.7, ease: "easeOut" }} // テキスト移動のアニメーション。0.7秒で上に移動
         >
           <Typewriter
-            words={["Hi! I'm KAZUKI. Welcome to my portfolio!"]}
+            words={
+              isMobile
+                ? ["Hi! I'm KAZUKI."]
+                : ["Hi! I'm KAZUKI. Welcome to my portfolio!"]
+            }
             loop={1}
             cursor
             cursorStyle="_"
@@ -75,7 +81,11 @@ export default function Home() {
           <button
             onClick={toggleDarkMode}
             className={`fixed top-4 right-4 flex items-center justify-center w-10 h-10 text-gray-800 dark:text-gray-200 border border-gray-300 dark:border-gray-600 rounded-full shadow-md transition
-              ${isDarkMode ? 'bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700' : 'bg-white hover:bg-gray-200'}`}
+              ${
+                isDarkMode
+                  ? "bg-gray-200 hover:bg-gray-300 dark:bg-gray-800 dark:hover:bg-gray-700"
+                  : "bg-white hover:bg-gray-200"
+              }`}
             aria-label="Toggle Dark Mode"
           >
             {isDarkMode ? (
