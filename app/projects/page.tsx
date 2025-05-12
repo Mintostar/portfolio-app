@@ -20,6 +20,23 @@ export default function ProjectsPage() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        isDropdownOpen &&
+        event.target instanceof HTMLElement &&
+        !event.target.closest(".dropdown-menu")
+      ) {
+        setIsDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isDropdownOpen]);
+
   const handleCardClick = (project: Project) => {
     setSelectedProject(project);
   };
@@ -66,7 +83,7 @@ export default function ProjectsPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.3 } }}
                 transition={{ duration: 0.2 }}
-                className="absolute right-0 mt-2 w-48 bg-gray-700 text-white border border-gray-600 rounded-lg shadow-lg"
+                className="absolute right-0 mt-2 w-48 bg-gray-700 text-white border border-gray-600 rounded-lg shadow-lg dropdown-menu"
               >
                 <button
                   onClick={() => handleSortChange("asc")}
