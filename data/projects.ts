@@ -1,4 +1,5 @@
 export interface Project {
+  id: string;
   title: string;
   description: string;
   githubUrl: string;
@@ -16,6 +17,7 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "1",
     title: "ポートフォリオサイト",
     description: "Next.js + shadcn/uiを用いたポートフォリオサイト",
     githubUrl: "https://github.com/Mintostar/portfolio-app",
@@ -46,6 +48,7 @@ export const projects: Project[] = [
     isDeveloping: true,
   },
   {
+    id: "2",
     title: "ECサイト",
     description: "Next.jsとFirebase、Stripeを活用したECサイト",
     githubUrl: "https://github.com/itc-s23014/EC_SITE",
@@ -73,6 +76,7 @@ export const projects: Project[] = [
     isDeveloping: false,
   },
   {
+    id: "3",
     title: "出席管理システム",
     description: "上級生と共同制作した出席管理システム",
     githubUrl: "https://github.com/itc-s22001/PBL_B",
@@ -95,6 +99,7 @@ export const projects: Project[] = [
     isDeveloping: false,
   },
   {
+    id: "4",
     title: "ポケモンクイズアプリ",
     description: "PokeAPIを利用した、姿当てAndroidアプリ",
     githubUrl: "https://github.com/itc-s23023/Android2Exam",
@@ -112,6 +117,7 @@ export const projects: Project[] = [
     isDeveloping: true,
   },
   {
+    id: "5",
     title: "Mod翻訳ツール",
     description: "MinecraftのModの言語ファイルを翻訳してくれるツール。",
     githubUrl: "https://github.com/Mintostar/ModTranslation",
@@ -136,6 +142,7 @@ export const projects: Project[] = [
     isDeveloping: true,
   },
   {
+    id: "6",
     title: "音楽プレイヤー",
     description: "Electronを使って作った。デスクトップアプリケーション。",
     githubUrl: "https://github.com/Mintostar/music_player",

@@ -110,13 +110,18 @@ export default function ProjectsPage() {
       {typingDone && (
         <section className="mt-[200px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8 relative z-10 text-gray-800 dark:text-gray-200">
           {sortedProjects.map((project, i) => (
-            <div
-              key={i}
+            <motion.div
+              key={project.id}
               className="relative"
               onClick={() => handleCardClick(project)}
+              layout
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.5 }}
             >
               <ProjectCard project={project} index={i} />
-            </div>
+            </motion.div>
           ))}
         </section>
       )}
