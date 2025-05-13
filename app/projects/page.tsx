@@ -112,8 +112,8 @@ export default function ProjectsPage() {
           {sortedProjects.map((project, i) => (
             <div
               key={i}
+              className="relative"
               onClick={() => handleCardClick(project)}
-              className="cursor-pointer"
             >
               <ProjectCard project={project} index={i} />
             </div>
