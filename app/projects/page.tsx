@@ -73,9 +73,9 @@ export default function ProjectsPage() {
           <div className="absolute top-4 right-4">
             <button
               onClick={toggleDropdown}
-              className="bg-gray-900 text-white p-2 rounded-full shadow-md focus:outline-none hover:bg-gray-800 transition duration-200 ease-in-out transform hover:scale-110"
+              className="p-2 rounded-full shadow-sm focus:outline-none transition duration-200 ease-in-out transform hover:scale-110 bg-white text-black hover:bg-gray-100 dark:bg-gray-900 dark:text-white dark:hover:bg-gray-800"
             >
-              <MdSort size={24} />
+              <MdSort size={24} className="text-black dark:text-white" />
             </button>
             {isDropdownOpen && (
               <motion.div
@@ -83,17 +83,17 @@ export default function ProjectsPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.8, transition: { duration: 0.3 } }}
                 transition={{ duration: 0.2 }}
-                className="absolute right-0 mt-2 w-48 bg-gray-700 text-white border border-gray-600 rounded-lg shadow-lg dropdown-menu"
+                className="absolute right-0 mt-2 w-48 bg-white text-black border border-gray-300 rounded-lg shadow-md dropdown-menu dark:bg-gray-700 dark:text-white dark:border-gray-600"
               >
                 <button
                   onClick={() => handleSortChange("asc")}
-                  className="block w-full px-4 py-2 text-left bg-gray-700 hover:bg-gray-600 rounded-t-lg transition duration-200 ease-in-out"
+                  className="block w-full px-4 py-2 text-left bg-white hover:bg-gray-100 rounded-t-lg transition duration-200 ease-in-out dark:bg-gray-700 dark:hover:bg-gray-600"
                 >
                   昇順 (日付)
                 </button>
                 <button
                   onClick={() => handleSortChange("desc")}
-                  className="block w-full px-4 py-2 text-left bg-gray-700 hover:bg-gray-600 rounded-b-lg transition duration-200 ease-in-out"
+                  className="block w-full px-4 py-2 text-left bg-white hover:bg-gray-100 rounded-b-lg transition duration-200 ease-in-out dark:bg-gray-700 dark:hover:bg-gray-600"
                 >
                   降順 (日付)
                 </button>
