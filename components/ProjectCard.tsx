@@ -45,9 +45,15 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
               {project.description}
             </p>
             {project.isDeveloping ? (
-              <span className="text-xs text-red-500">開発中</span>
+              <div className="flex items-center mt-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-red-500 mr-2"></span>
+                <span className="text-xs text-red-500">開発中</span>
+              </div>
             ) : (
-              <span className="text-xs text-green-500">完成</span>
+              <div className="flex items-center mt-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-green-500 mr-2"></span>
+                <span className="text-xs text-green-500">完成</span>
+              </div>
             )}
           </div>
 
