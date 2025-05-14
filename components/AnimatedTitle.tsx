@@ -9,9 +9,11 @@ interface AnimatedTitleProps {
   typingDelay?: number; // タイピングアニメーションの遅延
 }
 
+const DEFAULT_TYPING_DELAY = 2500;
+
 export const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
   title,
-  typingDelay = 2500,
+  typingDelay = DEFAULT_TYPING_DELAY,
 }) => {
   const [typingDone, setTypingDone] = useState(false);
 
@@ -20,12 +22,16 @@ export const AnimatedTitle: React.FC<AnimatedTitleProps> = ({
     return () => clearTimeout(timer);
   }, [typingDelay]);
 
+  const animationProps = {
+    initial: { scale: 1 },
+    animate: typingDone ? { scale: 0.7, y: "-42vh" } : { scale: 1, y: "0vh" },
+    transition: { duration: 1, delay: 0.3 },
+  };
+
   return (
     <motion.div
-      className="flex items-center justify-center w-full h-screen absolute z-0" // z-indexを下げる
-      initial={{ scale: 1 }}
-      animate={typingDone ? { scale: 0.7, y: "-42vh" } : { scale: 1, y: "0vh" }}
-      transition={{ duration: 1, delay: 0.3 }}
+      className="flex items-center justify-center w-full h-screen absolute z-0"
+      {...animationProps}
     >
       <div className="text-gray-900 dark:text-gray-100 font-bold text-4xl sm:text-5xl md:text-6xl text-center">
         {!typingDone ? (

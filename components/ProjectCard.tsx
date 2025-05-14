@@ -2,6 +2,7 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 type Project = {
   title: string;
@@ -17,15 +18,24 @@ type ProjectCardProps = {
 };
 
 export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
+  const animationProps = {
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0 },
+    transition: { delay: 1.5 + index * 0.3, duration: 0.6 },
+  };
+
   return (
     <motion.div
       className="cursor-pointer w-full h-full"
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 1.5 + index * 0.3, duration: 0.6 }}
+      {...animationProps}
       onClick={onClick}
     >
-      <Card className="text-card-foreground gap-6 rounded-xl border shadow-sm w-full h-full max-w-xl mx-auto flex flex-col justify-between bg-white dark:bg-gray-800">
+      <Card
+        className={cn(
+          "text-card-foreground gap-6 rounded-xl border shadow-sm w-full h-full max-w-xl mx-auto flex flex-col justify-between",
+          "bg-white dark:bg-gray-800"
+        )}
+      >
         <CardContent className="p-5 flex flex-col justify-between h-full text-gray-800 dark:text-gray-200">
           <div>
             <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
@@ -34,10 +44,9 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
             <p className="text-sm text-gray-600 dark:text-gray-400">
               {project.description}
             </p>
-            {project.isDeveloping && (
+            {project.isDeveloping ? (
               <span className="text-xs text-red-500">開発中</span>
-            )}
-            {!project.isDeveloping && (
+            ) : (
               <span className="text-xs text-green-500">完成</span>
             )}
           </div>
