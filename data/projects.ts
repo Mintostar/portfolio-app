@@ -44,7 +44,7 @@ export const projects: Project[] = [
     reflections:
       "Framer Motionの理解が浅く、実装に時間がかかった。詳細なページのデザインを考えずに実装を始めてしまったため、少し迷走してしまった。",
     futurePlans:
-      "プロジェクトごとのイメージ画像を入れたい。global.cssを用いてのダークモードの実装をしたい。",
+      "プロジェクトごとのイメージ画像を入れたい。CMSを導入して動的にコンテンツを管理したい。",
     isDeveloping: true,
   },
   {
