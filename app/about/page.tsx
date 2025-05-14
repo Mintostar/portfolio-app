@@ -90,7 +90,14 @@ export default function AboutPage() {
           <motion.span
             key={index}
             initial={{ color: "#d1d5db" }}
-            animate={{ color: index < level ? "#000000" : "#d1d5db" }}
+            animate={{
+              color:
+                index < level
+                  ? window.matchMedia("(prefers-color-scheme: dark)").matches
+                    ? "#facc15"
+                    : "#000000"
+                  : "#d1d5db",
+            }}
             transition={{
               delay: baseDelay + index * 0.4,
               duration: 0.3,
