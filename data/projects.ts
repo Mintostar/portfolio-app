@@ -81,7 +81,7 @@ export const projects: Project[] = [
     description: "上級生と共同制作した出席管理システム",
     githubUrl: "https://github.com/itc-s22001/PBL_B",
     siteUrl: "",
-    date: "2025/04/07",
+    date: "2025/08/13",
     background:
       "2年生のとき、3年生と共同制作。出席を管理するためのシステムを作った。",
     techStack: ["Next.js", "VScode", "Firebase", "Figma"],
