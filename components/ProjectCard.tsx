@@ -1,15 +1,7 @@
 "use client";
 
-import { Card, CardContent } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
-
-type Project = {
-  title: string;
-  description: string;
-  date?: string;
-  isDeveloping?: boolean;
-};
+import type { Project } from "@/data/projects";
 
 type ProjectCardProps = {
   project: Project;
@@ -21,7 +13,7 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
   const animationProps = {
     initial: { opacity: 0, y: 30 },
     animate: { opacity: 1, y: 0 },
-    transition: { delay: 1.5 + index * 0.3, duration: 0.6 },
+    transition: { delay: 1.5 + index * 0.15, duration: 0.5 },
   };
 
   return (
@@ -30,40 +22,41 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
       {...animationProps}
       onClick={onClick}
     >
-      <Card
-        className={cn(
-          "text-card-foreground gap-6 rounded-xl border shadow-sm w-full h-full max-w-xl mx-auto flex flex-col justify-between",
-          "bg-white dark:bg-gray-800"
-        )}
-      >
-        <CardContent className="p-5 flex flex-col justify-between h-full text-gray-800 dark:text-gray-200">
-          <div>
-            <h3 className="text-xl font-semibold mb-3 text-gray-800 dark:text-gray-200">
-              {project.title}
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-400">
-              {project.description}
-            </p>
-            {project.isDeveloping ? (
-              <div className="flex items-center mt-2">
-                <span className="inline-block w-2 h-2 rounded-full bg-red-500 mr-2"></span>
-                <span className="text-xs text-red-500">開発中</span>
-              </div>
-            ) : (
-              <div className="flex items-center mt-2">
-                <span className="inline-block w-2 h-2 rounded-full bg-green-500 mr-2"></span>
-                <span className="text-xs text-green-500">完成</span>
-              </div>
-            )}
-          </div>
-
-          {project.date && (
-            <div className="mt-auto pt-6 text-xs text-gray-400 dark:text-gray-500 text-right">
-              {project.date}
+      <div className="flex flex-col gap-2 pb-2 max-w-[180px] mx-auto">
+        {/* 画像部分 */}
+        <motion.div
+          className="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-lg"
+          style={{
+            backgroundImage: `url('${project.background || "/noimage.png"}')`,
+          }}
+          layoutId={`project-image-${project.id}`}
+        ></motion.div>
+        {/* テキスト部分 */}
+        <div>
+          <p className="text-[#0d141c] dark:text-gray-100 text-sm font-medium leading-tight truncate">
+            {project.title}
+          </p>
+          <p className="text-[#49739c] dark:text-[#8ab4f8] text-xs font-normal leading-tight">
+            {project.date || ""}
+          </p>
+          {/* バッジ部分（もともとのデザイン＋ダークモード色） */}
+          {project.isDeveloping ? (
+            <div className="flex items-center mt-1">
+              <span className="inline-block w-2 h-2 rounded-full bg-red-500 mr-1"></span>
+              <span className="text-xs text-red-500 dark:text-red-400">
+                開発中
+              </span>
+            </div>
+          ) : (
+            <div className="flex items-center mt-1">
+              <span className="inline-block w-2 h-2 rounded-full bg-green-500 mr-1"></span>
+              <span className="text-xs text-green-500 dark:text-green-400">
+                完成
+              </span>
             </div>
           )}
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </motion.div>
   );
 };

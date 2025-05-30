@@ -19,10 +19,11 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
     exit: { opacity: 0 },
   };
 
+  // モーダル本体のアニメーションを調整（scaleを使わず、ふわっと表示）
   const modalAnimationProps = {
-    initial: { scale: 0.95, opacity: 0 },
-    animate: { scale: 1, opacity: 1 },
-    exit: { scale: 0.9, opacity: 0 },
+    initial: { opacity: 0, y: 30 },
+    animate: { opacity: 1, y: 0 },
+    exit: { opacity: 0, y: 30 },
     transition: { duration: 0.3 },
   };
 
@@ -34,7 +35,7 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
       aria-label="プロジェクト詳細モーダル"
     >
       <motion.div
-        className="bg-white/90 dark:bg-gray-800 backdrop-blur-md shadow-2xl rounded-3xl p-6 sm:p-8 md:p-12 max-w-full sm:max-w-4xl w-full max-h-screen overflow-y-auto relative border border-gray-200 dark:border-gray-700"
+        className="bg-white/90 dark:bg-gray-800 backdrop-blur-md shadow-2xl rounded-3xl p-6 sm:p-8 md:p-12 max-w-full sm:max-w-4xl w-full max-h-[90vh] my-8 sm:my-12 overflow-y-auto relative border border-gray-200 dark:border-gray-700"
         {...modalAnimationProps}
         onClick={(e) => e.stopPropagation()}
       >
@@ -45,6 +46,15 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
         >
           ✕
         </button>
+
+        {/* メインイメージ（カードと同じ画像） */}
+        {project.background && (
+          <motion.div
+            className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl mb-6"
+            style={{ backgroundImage: `url('${project.background}')` }}
+            layoutId={`project-image-${project.id}`}
+          ></motion.div>
+        )}
 
         <div className="space-y-6 text-gray-800 dark:text-gray-200">
           <div className="border-b pb-4">

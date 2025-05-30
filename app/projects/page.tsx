@@ -108,7 +108,7 @@ export default function ProjectsPage() {
       </div>
 
       {typingDone && (
-        <section className="mt-[200px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-8 relative z-10 text-gray-800 dark:text-gray-200">
+        <section className="mt-[200px] grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-5 gap-x-6 gap-y-8 relative z-10 text-gray-800 dark:text-gray-200 px-2 sm:px-24 lg:px-48 xl:px-64">
           {sortedProjects.map((project, i) => (
             <motion.div
               key={project.id}
