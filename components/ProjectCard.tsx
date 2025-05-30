@@ -24,12 +24,11 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
     >
       <div className="flex flex-col gap-2 pb-2 max-w-[180px] mx-auto">
         {/* 画像部分 */}
-        <div
+        <motion.div
           className="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-lg"
-          style={{
-            backgroundImage: `url('${project.background || "/noimage.png"}')`,
-          }}
-        ></div>
+          style={{ backgroundImage: `url('${project.background || "/noimage.png"}')` }}
+          layoutId={`project-image-${project.id}`}
+        ></motion.div>
         {/* テキスト部分 */}
         <div>
           <p className="text-[#0d141c] dark:text-gray-100 text-sm font-medium leading-tight truncate">

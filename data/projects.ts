@@ -82,7 +82,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/itc-s22001/PBL_B",
     siteUrl: "",
     date: "2025/08/13",
-    background: "https://placehold.jp/150x150.png",
+    background: "https://placehold.jp/3d4070/ffffff/300x150.png",
     techStack: ["Next.js", "VScode", "Firebase", "Figma"],
     features: [
       "シンプルなUIデザイン",
