@@ -23,7 +23,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/Mintostar/portfolio-app",
     siteUrl: "https://portfolio-app-phi-snowy.vercel.app/",
     date: "2025/04/07",
-    background: "自分のスキル・実績をまとめるために制作した。",
+    background: "https://placehold.jp/150x150.png",
     techStack: [
       "Next.js",
       "VScode",
@@ -54,7 +54,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/itc-s23014/EC_SITE",
     siteUrl: "https://ec-site-three.vercel.app/",
     date: "2025/02/26",
-    background: "進級制作課題として、二人で制作した。",
+    background: "https://placehold.jp/150x150.png",
     techStack: ["Next.js", "VScode", "Firebase", "Tailwind CSS", "Stripe"],
     features: [
       "Firebase Authenticationによるユーザー認証",
@@ -82,8 +82,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/itc-s22001/PBL_B",
     siteUrl: "",
     date: "2025/08/13",
-    background:
-      "2年生のとき、3年生と共同制作。出席を管理するためのシステムを作った。",
+    background: "https://placehold.jp/150x150.png",
     techStack: ["Next.js", "VScode", "Firebase", "Figma"],
     features: [
       "シンプルなUIデザイン",
@@ -105,7 +104,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/itc-s23023/Android2Exam",
     siteUrl: "",
     date: "2024/12/01",
-    background: "Androidアプリ開発の課題として制作した。",
+    background: "https://placehold.jp/150x150.png",
     techStack: ["Kotlin", "Android Studio"],
     features: ["取得したデータの保持", "最新のデータの取得"],
     learnings: "この課題で初めてKotlinを触り、Android開発をした。",
@@ -123,7 +122,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/Mintostar/ModTranslation",
     siteUrl: "",
     date: "2024/11/19",
-    background: "Minecraftの日本語未翻訳のModを快適に遊ぶために開発した。",
+    background: "https://placehold.jp/150x150.png",
     techStack: ["Python", "VScode", "googletrans API"],
     features: [
       "Jsonファイルの英語から日本語への翻訳",
@@ -148,7 +147,7 @@ export const projects: Project[] = [
     githubUrl: "https://github.com/Mintostar/music_player",
     siteUrl: "",
     date: "2025/03/24",
-    background: "シンプルで広告がない音楽プレイヤーが欲しくて開発を始めた。",
+    background: "https://placehold.jp/150x150.png",
     techStack: ["Node.js", "HTML", "CSS", "Electron"],
     features: ["MP3ファイルの再生", "プログレスバーの表示"],
     learnings: "まだ開発中ですが、Electronの開発環境の構築方法を理解しました。",
