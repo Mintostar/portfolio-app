@@ -48,10 +48,10 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({
         </button>
 
         {/* メインイメージ（カードと同じ画像） */}
-        {project.background && (
+        {project.imageUrl && (
           <motion.div
             className="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl mb-6"
-            style={{ backgroundImage: `url('${project.background}')` }}
+            style={{ backgroundImage: `url('${project.imageUrl}')` }}
             layoutId={`project-image-${project.id}`}
           ></motion.div>
         )}

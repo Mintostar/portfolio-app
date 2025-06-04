@@ -27,7 +27,7 @@ export const ProjectCard = ({ project, index, onClick }: ProjectCardProps) => {
         <motion.div
           className="w-full bg-center bg-no-repeat aspect-[4/3] bg-cover rounded-lg"
           style={{
-            backgroundImage: `url('${project.background || "/noimage.png"}')`,
+            backgroundImage: `url('${project.imageUrl || "/noimage.png"}')`,
           }}
           layoutId={`project-image-${project.id}`}
         ></motion.div>
